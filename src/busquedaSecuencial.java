@@ -1,31 +1,60 @@
 
 import java.util.*;
-public class busquedaSecuencial {
-	public static void main(String [] args) throws InterruptedException {
-		int [] list1 ={ 2,10,5};
-		int [] list2 ={ 10,8,100,20,5,30};
-		int [] list3 ={ 1,40,4,25,26,7,10,27,59,4,5,71,20,};
-		int [] list4 ={ 4,5,78,20,1,4,25,26,40,12,15,50,27,41,10,9,17,25,50,100,84,21,3,53,2};
-		int [] list5 ={ 1,40,4,15,13,14,2,58,42,31,52,54,19,28,27,25,21,11,26,40,12,15,50,27,41,10,9,17,25,50,100,84,21,3,53,2};
-	search(list1,10);
-	ordenar(list1);
-	sort(list1);
-	search(list2,10);
-	ordenar(list2);
-	sort(list2);
-	search(list3,10);
-	ordenar(list3);
-	sort(list3);
-	search(list4,10);
-	ordenar(list4);
-	sort(list4);
-	search(list5,10);
-	ordenar(list5);
-	sort(list5);
+public class Ejercicios {
+	public static void main(String [] args) {
+		//-----------------Ejemplo para invertir lista ordenada----------//
+		 int [] lista = new int [10];
+			for( int j=0; j<lista.length;j++) {
+				lista[j]=(int)(Math.random()*1000+1);//llenamos nuestra lista de tamaño a con numeros alatorios
+			}
+		//InvertirLista(lista);
+		// ---------------fin del ejemplo -----//
+			System.out.println("-----------------tiempos ------------");
+			//tiempoListas("busqueda");
+			System.out.println("-----------tiempos ------------");
+			//tiempoListas("sort");
+
+		
 	}
-static void sort(int[]lista) throws InterruptedException {  
-	long TInicio, TFin, tiempo;      
-	TInicio = System.nanoTime();
+static void tiempoListas(String caso) {//creamos 50 listas con tamaños incrementados
+	long [] tiempos = new long [500] ;// lista donde se almacenaran los tiempos de la operacion
+	int [] listaTamaño = new int[500];
+	int  tamaño =100;
+			for ( int i=0; i<tiempos.length;i++) {
+				tiempos[i]=tiempoDemorado(tamaño,caso);
+				tamaño=tamaño+100;// tamaño incrementandose para cada lista
+				listaTamaño[i]=tamaño;
+				}
+			for ( int i=0; i<tiempos.length;i++) {
+				System.out.println(tiempos[i]);
+			}
+				System.out.println("------Tamaños de la lista---------");
+				for ( int j=0; j<listaTamaño.length;j++) {
+					System.out.println(listaTamaño[j]);
+			
+			}
+	}
+static long tiempoDemorado(int a, String caso){ //retorna el tiempo que se demora en realizar nuestras operaciones
+	int [] lista = new int [a];
+	long TInicio, TFin, tiempo = 0;
+	for( int j=0; j<lista.length;j++) {
+		lista[j]=(int)(Math.random()*10000+1);//llenamos nuestra lista de tamaño a con numeros alatorios
+	}
+	if (caso.equalsIgnoreCase("sort")){    
+		TInicio = System.nanoTime();
+		insertionSort(lista);//calcula el tiempo de insertionSort con la lista
+		TFin= System.nanoTime();
+		tiempo = TFin - TInicio;
+	}else if (caso.equalsIgnoreCase("busqueda")){      
+		TInicio = System.nanoTime();
+		busquedaLineal(lista);//calcula el tiempo de busqueda Lineal con la lista
+		TFin= System.nanoTime();
+		tiempo = TFin - TInicio;
+	}
+	return tiempo;
+}
+static void insertionSort(int[]lista) {  
+
 	int i,j,key;
 	for( j=2; j<lista.length;j++) {
 		key=lista[j];
@@ -36,42 +65,25 @@ static void sort(int[]lista) throws InterruptedException {
 		}
 		lista[1+i]=key;
 	}
-	TFin= System.nanoTime();
-	  tiempo = TFin - TInicio;
-	  System.out.println("Tiempo en milisegundos por sort: " + tiempo);
-    System.out.println(Arrays.toString(lista));
+
 }
-static void ordenar(int [] lista) throws InterruptedException {  
-	long TInicio, TFin, tiempo;           
-	TInicio = System.nanoTime();
-    for(int i=0;i<lista.length-1;i++) {
-    	int min=i;
-    	for(int j=i+1;j<lista.length;j++) {
-    	if(lista[j]<lista[min]) {
-    	min=j;}
-    	}
-    	if(i!=min){
-    	int aux =lista[i];
-    	lista[i]=lista[min];
-    	lista[min] = aux;}
-    		
-    	}
-	TFin= System.nanoTime();
-		  tiempo = TFin - TInicio;
-		  System.out.println("Tiempo en milisegundos para ordenar: " + tiempo);
+static void InvertirLista( int [] lista) {
+	insertionSort(lista);//ordenamos la lista primero
+     for (int i=lista.length-1; i>0;i--) {
+    	 System.out.println(lista[i]);
+	}
+
+}
+static boolean busquedaLineal( int [] lista) {
+	final int numero = 20; //numero a buscar
+	boolean respt = false;
+     for (int i=0 ; i<lista.length;i++) {
+		if( lista[i]==numero) {
+			return true;
+		}
+	}
+     return respt;
 }
 
-static void search( int [] lista, int num) throws InterruptedException{
-	boolean respt=false;
-	long TInicio, TFin, tiempo;      
-	TInicio = System.nanoTime();
-     for (int i=0 ; i<lista.length;i++) {
-		if( lista[i]==num)
-			respt=true;
-	}
-	System.out.println(respt);
-	TFin= System.nanoTime();
-	  tiempo = TFin - TInicio;
-	  System.out.println("Tiempo en milisegundos en buscar: " + tiempo);
-}
+
 }
