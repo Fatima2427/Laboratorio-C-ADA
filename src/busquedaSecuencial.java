@@ -1,11 +1,11 @@
 
 import java.util.*;
-public class Ejercicios {
+public class busquedaSecuencial {
 	public static void main(String [] args) {
 		//-----------------Ejemplo para invertir lista ordenada----------//
 		 int [] lista = new int [10];
 			for( int j=0; j<lista.length;j++) {
-				lista[j]=(int)(Math.random()*1000+1);//llenamos nuestra lista de tamaño a con numeros alatorios
+				lista[j]=(int)(Math.random()*1000+1);//llenamos nuestra lista de tamaÃ±o a con numeros alatorios
 			}
 		//InvertirLista(lista);
 		// ---------------fin del ejemplo -----//
@@ -16,19 +16,19 @@ public class Ejercicios {
 
 		
 	}
-static void tiempoListas(String caso) {//creamos 50 listas con tamaños incrementados
+static void tiempoListas(String caso) {//creamos 50 listas con tamaÃ±os incrementados
 	long [] tiempos = new long [500] ;// lista donde se almacenaran los tiempos de la operacion
 	int [] listaTamaño = new int[500];
 	int  tamaño =100;
 			for ( int i=0; i<tiempos.length;i++) {
 				tiempos[i]=tiempoDemorado(tamaño,caso);
-				tamaño=tamaño+100;// tamaño incrementandose para cada lista
+				tamaño=tamaño+100;// tamaÃ±o incrementandose para cada lista
 				listaTamaño[i]=tamaño;
 				}
 			for ( int i=0; i<tiempos.length;i++) {
 				System.out.println(tiempos[i]);
 			}
-				System.out.println("------Tamaños de la lista---------");
+				System.out.println("------TamaÃ±os de la lista---------");
 				for ( int j=0; j<listaTamaño.length;j++) {
 					System.out.println(listaTamaño[j]);
 			
@@ -38,7 +38,7 @@ static long tiempoDemorado(int a, String caso){ //retorna el tiempo que se demor
 	int [] lista = new int [a];
 	long TInicio, TFin, tiempo = 0;
 	for( int j=0; j<lista.length;j++) {
-		lista[j]=(int)(Math.random()*10000+1);//llenamos nuestra lista de tamaño a con numeros alatorios
+		lista[j]=(int)(Math.random()*10000+1);//llenamos nuestra lista de tamaÃ±o a con numeros alatorios
 	}
 	if (caso.equalsIgnoreCase("sort")){    
 		TInicio = System.nanoTime();
