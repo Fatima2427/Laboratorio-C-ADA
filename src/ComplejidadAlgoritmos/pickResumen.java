@@ -10,7 +10,7 @@ public class pickResumen {
 	//what is the time complexity of this code?  o(n)
 	public static String pick_resume (List<String> resumes) {//o(log_2n) por que en cada vuelta va reduciendo entre mitad y terminara mucho mas rapido que un o(N)
 		String eliminate ="top";
-		while (resumes.size() >2) {//     le puse 2 por que cuando le doy 1 me da error  y no recuerdo si debe ser asi o es error de las diapos..                  
+		while (resumes.size() >2) {// le puse 2 por que cuando le doy 1 me da error  y no recuerdo si debe ser asi o es error de las diapos..                  
 			if ( eliminate== "top") {
 				resumes =resumes.subList(resumes.size()/2, resumes.size()-1);
 			    eliminate="bottom";

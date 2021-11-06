@@ -1,5 +1,3 @@
-package ComplejidadAlgoritmos;
-import java.util.*;
 public class findNeedle {
 	public static void main (String [] args) {
 		String[] needle = {"f","g","y"};
