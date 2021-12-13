@@ -1,5 +1,6 @@
 public class Square {
 	public static void main (String [] args) {
+        //5. Maximal Square
         //Given an m x n binary matrix filled with 0's and 1's, find the largest square containing only 1's and return its area.
 		char [][] a = {{'1','0','1','0','0'},{'1','0','1','1','1'},{'1','1','1','1','1'},{'1','0','0','1','0'}};
 		System.out.println(maximalSquare(a));

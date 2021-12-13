@@ -1,8 +1,9 @@
 
 public class rectangle {
-	public static void main (String [] args) {
-		System.out.println(recCut(3,5));
-	}
+    //4. Rectangle Cutting
+
+    //Given an a×b rectangle, your task is to cut it into squares. On each move you can select a
+    //rectangle and cut it into two rectangles in such a way that all side lengths remain integers. What is the minimum possible number of moves?
 	 public static int recCut(int n, int m) {
 	        int[][] dp = new int[n+1][m+1];
 	        for(int i=1;i<=n;i++){
