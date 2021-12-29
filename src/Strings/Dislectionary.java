@@ -8,7 +8,7 @@ public class Dyslectionary {
     //The Dyslectionary is just like an ordinary dictionary except that it organizes words based on how
 //they end rather than how they start.
 
-//----- Si funciona pero me da error los test por eso estoy dejando con caso de prueba.... ------
+//----- Si funciona pero me da error los test por eso estoy dejando con caso de prueba igual con los demas ejercicios.... ------
 	public static void main (String [] args) {
 	Scanner sc = new Scanner(System.in);
 	ArrayList<ArrayList<String>> listaGeneral = new ArrayList<ArrayList<String>> ();
@@ -57,7 +57,7 @@ static ArrayList<String>Spacios(ArrayList<String> lista){ //despues de invertir 
 		if(word.length() > tam)
 			tam = word.length();//encontrar la palabra mas larga...
 
-	for(int i = 0; i < lista.size(); i++){
+	for(int i = 0; i < lista.size(); i++){//agrega espacios segun la palabra mas larga
 		String space = "";
 		for(int j = 0; j < tam - lista.get(i).length(); j++) space += " ";
 		lista.set(i, space + lista.get(i));
