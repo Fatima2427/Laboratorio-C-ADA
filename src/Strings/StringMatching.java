@@ -1,75 +1,48 @@
 
-
-import java.util.Scanner;
-public class Matching{
-	public static void main (String [] args)throws Exception {
-		Scanner sc = new Scanner(System.in);
-		StringBuilder rpta = new StringBuilder();
-		int tamaño;
-		while (sc.hasNextLine()) {
-			String pattern =  sc.nextLine();
-			String text =sc.nextLine();
-			tamaño=text.length();
-			if( pattern!=null && text !=null){
-				if ( text.length() <pattern.length()) {
-					rpta.append(" n");
-				}
-					for(int i=0;i<tamaño;i++){
-						if( text.charAt(i)==pattern.charAt(0)) {
-							String cadena = text.substring(i,i+pattern.length());
-							if(cadena.equals(pattern))
-
-								rpta.append(i).append(' ');
-						
-	    	  
-	      }
-		}
-			}
-				rpta.append("\n");
-			}
-				 System.out.println(rpta);
-			
-		}
-		
-	    
-	
-}
-/*
-
-package Strings;
 import java.util.ArrayList;
 import java.util.Scanner;
 public class Matching{
 	public static void main (String [] args)throws Exception {
 		Scanner sc = new Scanner(System.in);
 		ArrayList<String> list = new ArrayList<String>();
-
+		int tamaño;
 		//while (sc.hasNextLine()) {
-			String pattern = "p";
-			String text ="Popup";
-			pattern = "p";
-			 text ="Poup";
-
+			list.add("p");
+			list.add("Popup");
+			list.add("helo");
+			list.add("Hello there!");
+			 list.add("peek a boo");
+			 list.add("you speek a bootiful language");
+	list.add("anas");
+	list.add("bananananaspaj");
+			rpta( list);
+	}
+	static void rpta(ArrayList<String> list ) {
 		StringBuilder rpta = new StringBuilder();
+		for ( int i=0 ; i<list.size() ; i+=2) {
+			
+			String pattern =list.get(i);
+			String text = list.get(i+1);
 			int tamaño=text.length();
 			if( pattern!=null && text !=null){
-				if ( text.length() <pattern.length()) {
-					rpta.append("");
-				}
-					for(int i=0;i<tamaño;i++){
-						if( text.charAt(i)==pattern.charAt(0)) {
-							String cadena = text.substring(i,i+pattern.length());
+				
+				for(int j=0;j<tamaño;j++){
+						if( text.charAt(j)==pattern.charAt(0) && tamaño - (j+pattern.length())>=0) {
+							String cadena = text.substring(j,j+pattern.length());
 							if(cadena.equals(pattern))
-								rpta.append(i).append(' ');
+								rpta.append(j).append(" ");
 						
 	    	  
 	      }
-		//}
 			}
-				rpta.append("");
-				list.add(rpta.toString());
+				rpta.append("\n");
 			}
-				 System.out.println(list);
-			}
+			
 		}
-		*/
+		System.out.print(rpta);
+		}
+	
+	
+	
+	}
+
